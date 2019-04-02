@@ -16,7 +16,7 @@
 
 #if !defined(__native_client__)
 
-#include <netdb.h>
+//#include <netdb.h>
 
 #if CRABNET_SUPPORT_IPV6==1
 
