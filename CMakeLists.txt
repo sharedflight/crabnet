@@ -4,6 +4,10 @@ project(CrabNet)
 
 set(CMAKE_CXX_STANDARD 11)
 
+if(APPLE)
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.9")
+endif(APPLE)
+
 if( NOT APPLE )
     # check 64 bit
     if( CMAKE_SIZEOF_VOID_P MATCHES "4" )
