@@ -13,31 +13,29 @@ Your compiler should support C++11.
 
 You also need CMake 3.5 to generate project files.
 
-Package notes
--------------
-* The Help directory contains index.html, which provides full documentation and help
-* The Source directory contain all files required for the core of CrabNet and is used
-if you want to use the source in your program or create your own dll
-* The Samples directory contains code samples and one game using an older version of RakNet.
-The code samples each demonstrate one feature of CrabNet. The game samples cover several features.
+
+PATCH APPLIED FROM SASO...
+-----
+patch -p1 < gcc-compile.patch
+
 
 Linux
 -----
 ```
 mkdir build
 cd build
-cmake -DCMAKE_BUILD_TYPE=Release ..
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_POSITION_INDEPENDENT_CODE=On ..
 cmake --build . -- -j4
 ```
 
-Windows
+Windows Build From On Linux
 -------
-If you have CMake in ``PATH`` environment:
 ```
-mkdir build
-cd build
-cmake -DCMAKE_BUILD_TYPE=Release ..
-cmake --build . --target RakNetLibStatic \
-                --config Release \
-                --clean-first
+mkdir build_win
+cd build_win
+cmake -DCMAKE_TOOLCHAIN_FILE=../XCompile.txt -DCMAKE_BUILD_TYPE=Release -DHOST=x86_64-w64-mingw32 ..
+make -j 6
+#cmake --build . --target RakNetLibStatic
+#                --config Release \
+#                --clean-first
 ```

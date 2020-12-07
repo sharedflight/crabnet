@@ -1,0 +1,3 @@
+/usr/bin/cmake -E remove -f CMakeFiles/RakNetDLL.dir/objects.a
+/usr/bin/x86_64-w64-mingw32-ar cr CMakeFiles/RakNetDLL.dir/objects.a @CMakeFiles/RakNetDLL.dir/objects1.rsp
+/usr/bin/x86_64-w64-mingw32-g++  -O3 -DNDEBUG  -shared -o libRakNetDLL.dll -Wl,--out-implib,libRakNetDLL.dll.a -Wl,--major-image-version,0,--minor-image-version,0 -Wl,--whole-archive CMakeFiles/RakNetDLL.dir/objects.a -Wl,--no-whole-archive @CMakeFiles/RakNetDLL.dir/linklibs.rsp

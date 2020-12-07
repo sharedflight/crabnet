@@ -1,0 +1,68 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ce252c6..8d1ddfb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,7 +15,7 @@ endif( NOT APPLE )
+ 
+ IF (WIN32 AND NOT UNIX)
+     set (PROGRAMFILESX86 $ENV{PROGRAMFILES})
+-    string(REPLACE "\\" "/" PROGRAMFILESX86 ${PROGRAMFILESX86})
++#    string(REPLACE "\\" "/" PROGRAMFILESX86 ${PROGRAMFILESX86})
+ ENDIF(WIN32 AND NOT UNIX)
+ 
+ IF (WIN32 AND NOT UNIX)
+diff --git a/Source/Plugins/TCPInterface.cpp b/Source/Plugins/TCPInterface.cpp
+index 1adeb4c..990e56f 100644
+--- a/Source/Plugins/TCPInterface.cpp
++++ b/Source/Plugins/TCPInterface.cpp
+@@ -22,7 +22,7 @@
+ #include "TCPInterface.h"
+ #ifdef _WIN32
+ typedef int socklen_t;
+-#include "WSAStartupSingleton.h"
++#include "../WSAStartupSingleton.h"
+ #else
+ #include <sys/time.h>
+ #include <unistd.h>
+diff --git a/Source/Plugins/UDPForwarder.cpp b/Source/Plugins/UDPForwarder.cpp
+index 4ae4151..d0d559c 100644
+--- a/Source/Plugins/UDPForwarder.cpp
++++ b/Source/Plugins/UDPForwarder.cpp
+@@ -550,7 +550,7 @@ namespace RakNet
+                 RakSleep(0);
+         }
+         udpForwarder->threadRunning--;
+-        return nullptr;
++        return (uintptr_t)nullptr;
+     }
+ } // namespace RakNet
+ 
+diff --git a/Source/RakNetSocket2_Windows_Linux.cpp b/Source/RakNetSocket2_Windows_Linux.cpp
+index dfbd128..409fba6 100644
+--- a/Source/RakNetSocket2_Windows_Linux.cpp
++++ b/Source/RakNetSocket2_Windows_Linux.cpp
+@@ -16,7 +16,7 @@
+ 
+ #if !defined(__native_client__)
+ 
+-#include <netdb.h>
++//#include <netdb.h>
+ 
+ #if CRABNET_SUPPORT_IPV6==1
+ 
+diff --git a/include/raknet/WindowsIncludes.h b/include/raknet/WindowsIncludes.h
+index f1d43a5..9749531 100644
+--- a/include/raknet/WindowsIncludes.h
++++ b/include/raknet/WindowsIncludes.h
+@@ -10,9 +10,9 @@
+  */
+ 
+ #if defined (_WIN32)
+-#include <WinSock2.h>
++#include <winsock2.h>
+ #include <windows.h>
+-#include <Ws2tcpip.h>
++#include <ws2tcpip.h>
+ 
+ // Must always include Winsock2.h before windows.h
+ // or else:
