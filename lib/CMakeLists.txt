@@ -26,6 +26,8 @@ if(CRABNET_ENABLE_STATIC)
 
     target_link_libraries (RakNetLibStatic ${CRABNET_LIBRARY_LIBS})
 
+    set_property(TARGET RakNetLibStatic PROPERTY POSITION_INDEPENDENT_CODE_ON)
+
     if(MSVC)
         set_target_properties(RakNetLibStatic PROPERTIES STATIC_LIBRARY_FLAGS "/NODEFAULTLIB:\"LIBCD.lib LIBCMTD.lib MSVCRT.lib\"" )
     endif(MSVC)
