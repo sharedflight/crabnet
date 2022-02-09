@@ -11,6 +11,8 @@ x64/
 *.user
 *.suo
 
+build_win/
+
 # Xcode and OS X 
 build/
 *.pbxuser
