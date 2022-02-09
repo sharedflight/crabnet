@@ -550,7 +550,8 @@ namespace RakNet
                 RakSleep(0);
         }
         udpForwarder->threadRunning--;
-        return (uintptr_t)nullptr;
+
+        return 0;
     }
 } // namespace RakNet
 
